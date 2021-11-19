@@ -38,6 +38,7 @@ Using a **Content-Type: application/json** header with following JSON structure:
 
 ```
 {
+  "username": "username",
   "email": "email@mail.com",
   "password: "password"
 }
