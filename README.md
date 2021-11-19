@@ -4,7 +4,10 @@
 
 1. Login into your database and delete all **_user or _users** tables with the command:
 ```
-DROP TABLE thenameofyourdb CASCADE;
+psql -h localhost -p 55xx -U user_name db_name
+
+
+> DROP TABLE thenameofyourdb CASCADE;
 ```
 
 2. Make a new python environment with the command:
