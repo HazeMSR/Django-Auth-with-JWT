@@ -28,7 +28,7 @@ pip install -r requirements.txt
 
 or:
 ```
-pip install django restframework djangorestframework-simplejwt django-cors-headers psyco
+pip install django restframework djangorestframework-simplejwt django-cors-headers
 ```
 
 4. Make your migrations:
