@@ -23,12 +23,12 @@ pip install -r requirements.txt
 
 or instead:
 ```
-pip install -r requirements.txt
+pip install -r requirements2.txt
 ```
 
 or:
 ```
-pip install django restframework djangorestframework-simplejwt django-cors-headers
+pip install django restframework djangorestframework-simplejwt PyJWT django-cors-headers
 ```
 
 4. Make your migrations:
