@@ -21,6 +21,16 @@ eval "$(pyenv init --path)"
 pip install -r requirements.txt
 ```
 
+or instead:
+```
+pip install -r requirements.txt
+```
+
+or:
+```
+pip install django restframework djangorestframework-simplejwt django-cors-headers psyco
+```
+
 4. Make your migrations:
 ```
 python manage.py makemigrations

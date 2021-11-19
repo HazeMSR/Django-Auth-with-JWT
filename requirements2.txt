@@ -1,0 +1,14 @@
+aniso8601==9.0.1
+asgiref==3.4.1
+Django==3.2.9
+django-cors-headers==3.10.0
+django-graphql-jwt==0.3.4
+djangorestframework==3.12.4
+djangorestframework-simplejwt==5.0.0
+iso8601==1.0.0
+promise==2.3
+PyJWT==2.3.0
+pytz==2021.3
+singledispatch==3.7.0
+six==1.16.0
+sqlparse==0.4.2

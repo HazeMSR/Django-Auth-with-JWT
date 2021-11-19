@@ -10,9 +10,31 @@ import jwt, datetime
 class RegisterView(APIView):
     def post(self, request):
         serializer = UserSerializer(data=request.data)
+        '''
+        request : {
+            data: {
+                "username":"user",
+                "password":"pass",
+                "email":"email
+            },
+            Content-Type: "application/json",
+            ...
+        }
+        '''
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
+                '''
+        response : {
+            data: {
+                "username":"user",
+                "email":"email
+            },
+            Accept: "application/json",
+            Code: 200
+            ...
+        }
+        '''
 
 
 class LoginView(APIView):
@@ -30,7 +52,7 @@ class LoginView(APIView):
 
         payload = {
             'id': user.id,
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60),
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60), #1323488
             'iat': datetime.datetime.utcnow()
         }
 
