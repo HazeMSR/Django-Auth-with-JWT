@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import *
-from django.utils.text import gettext_lazy as _
 from rest_framework import serializers
 
 class StoreSerializer(serializers.ModelSerializer):
