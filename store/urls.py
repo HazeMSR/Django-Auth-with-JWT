@@ -8,8 +8,11 @@ router = routers.DefaultRouter()
   
 # define the router path and viewset to be used
 router.register(r'', StoreViewSet)
+router.register(r'job', JobViewSet)
+router.register(r'address', AddressViewSet)
+router.register(r'employee', EmployeeViewSet)
 
-# specify URL Path for rest_framework
+# URLS
 urlpatterns = [
     path('', include(router.urls)),
     path('view', StoreView.as_view()),
