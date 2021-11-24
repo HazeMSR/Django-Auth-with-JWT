@@ -1,7 +1,10 @@
 from rest_framework.views import APIView
+from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
-from .serializers import UserSerializer
+from rest_framework.permissions import IsAuthenticated
+from rest_framework import status
+from .serializers import *
 from .models import User
 import jwt, datetime
 
@@ -61,7 +64,7 @@ class UserView(APIView):
         return Response(serializer.data)
 
 
-class LogoutView(APIView):
+class LogoutOldieView(APIView):
     def post(self, request):
         response = Response()
         response.delete_cookie('jwt')
@@ -69,3 +72,13 @@ class LogoutView(APIView):
             'message': 'success'
         }
         return response
+
+class LogoutView(GenericAPIView):
+    serializer_class = RefreshTokenSerializer
+    permission_classes = (IsAuthenticated, )
+
+    def post(self, request, *args):
+        sz = self.get_serializer(data=request.data)
+        sz.is_valid(raise_exception=True)
+        sz.save()
+        return Response(status=status.HTTP_204_NO_CONTENT)

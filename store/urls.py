@@ -16,5 +16,4 @@ router.register(r'', StoreViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('view', StoreView.as_view()),
-    path('logout', LogoutView.as_view(), name='auth_logout'),
 ]
