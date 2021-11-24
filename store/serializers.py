@@ -6,9 +6,10 @@ from rest_framework_simplejwt.tokens import AccessToken, RefreshToken, TokenErro
 
 
 class StoreSerializer(serializers.ModelSerializer):
+    employees = serializers.StringRelatedField(many=True, read_only=True)
     class Meta:
         model = Store
-        fields = ['id','name','address','owner']
+        fields = ['id','name','address','owner', 'employees']
 
 class JobSerializer(serializers.ModelSerializer):
     class Meta:
@@ -20,11 +21,27 @@ class AddressSerializer(serializers.ModelSerializer):
         model = Address
         fields = ['id','name','state','ext_number','int_number']
 
+class Address2Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = Address
+        fields = ['name','ext_number']
+
 class EmployeeSerializer(serializers.ModelSerializer):
+    job = JobSerializer(many=True, read_only=True)
+    home_address = Address2Serializer()
     class Meta:
         model = Employee
-        fields = ['id','name','age','last_grade']
-        #fields = ['id','name','age','last_grade','job','address']
+        # fields = ['id','name','age','last_grade']
+        fields = ['id','name','age','last_grade','branch','job','home_address']
+
+    '''    
+    def create(self, validated_data):
+        jobs_data = validated_data.pop('jobs')
+        album = Employee.objects.create(**validated_data)
+        for track_data in tracks_data:
+            Job.objects.create(album=album, **job_data)
+        return employee
+    '''
 
 class RefreshTokenSerializer(serializers.Serializer):
     refresh = serializers.CharField()
@@ -35,7 +52,6 @@ class RefreshTokenSerializer(serializers.Serializer):
     }
 
     def validate(self, attrs):
-        print(attrs)
         self.refresh_token = attrs['refresh']
         # self.access_token = attrs['access']
         return attrs

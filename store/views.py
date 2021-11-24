@@ -29,9 +29,10 @@ class EmployeeViewSet(ModelViewSet):
 
 
 class StoreViewSet(ModelViewSet):
-    queryset = Store.objects.all()
     permission_classes = [IsAuthenticated]
+    queryset = Store.objects.all()
     serializer_class = StoreSerializer
+
 
 class StoreView(APIView):
     def get(self, request):
@@ -39,6 +40,18 @@ class StoreView(APIView):
         store = Store.objects.all()
         serializer = StoreSerializer(store, many=True)
         return Response(serializer.data)
+    
+    def post(self,request):
+        pass
+
+    def delete(self,request):
+        pass
+
+    def put(self,request):
+        pass
+
+    def patch(self,request):
+        pass
 
 class LogoutView(GenericAPIView):
     serializer_class = RefreshTokenSerializer

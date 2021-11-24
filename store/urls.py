@@ -7,10 +7,10 @@ from .views import *
 router = routers.DefaultRouter()
   
 # define the router path and viewset to be used
-router.register(r'', StoreViewSet)
 router.register(r'job', JobViewSet)
 router.register(r'address', AddressViewSet)
 router.register(r'employee', EmployeeViewSet)
+router.register(r'', StoreViewSet)
 
 # URLS
 urlpatterns = [

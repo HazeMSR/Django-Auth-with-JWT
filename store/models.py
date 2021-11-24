@@ -4,6 +4,7 @@ from django.db import models
 class Store(models.Model):
     name = models.CharField(max_length=100)
     address = models.TextField()
+    # address = models.OneToOneField(Address)
     owner = models.CharField(max_length=255)
     
     def __str__(self):
@@ -22,7 +23,7 @@ class Address(models.Model):
     ext_number = models.IntegerField(null=True)
 
     def __str__(self):
-        return self.name + ' ' + self.ext_number
+        return self.name + ' ' + str(self.ext_number)
 
 class Employee(models.Model):
     name = models.CharField(max_length=100)
@@ -32,6 +33,5 @@ class Employee(models.Model):
     job = models.ManyToManyField(Job)
     home_address = models.OneToOneField(Address, on_delete=models.DO_NOTHING)
     
-    
     def __str__(self):
-        return self.name + ' is ' + self.age + ' old and finished ' + self.last_grade
+        return 'Worker: ' + self.name + ' is ' + str(self.age) + ' old and finished ' + self.last_grade
