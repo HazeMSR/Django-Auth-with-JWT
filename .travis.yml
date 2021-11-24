@@ -1,0 +1,22 @@
+language: python
+
+python:
+    - "3.10"
+env:
+    - SECRET_KEY='TEST'
+  global:
+    - PGPORT=5526
+
+before_script:
+  # Create the test database:
+  - psql -c "CREATE DATABASE prueba;" -U postgres
+  - psql -c "CREATE USER samantha_guzman WITH PASSWORD 'pass';" -U postgres
+
+services:
+    - postgresql
+install:
+    - pipenv install
+
+script:
+    - pip install django djangorestframework djangorestframework-simplejwt PyJWT django-cors-headers
+    - python manage.py test
