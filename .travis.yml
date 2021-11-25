@@ -1,11 +1,21 @@
 language: python
 
-before_script:
-  - psql -c "CREATE DATABASE prueba;" -U postgres
-  - psql -c "CREATE USER samantha_guzman WITH PASSWORD 'pass';" -U postgres
+env:
+    global:
+      - PSQL_USERNAME=samantha_guzman
+      - PSQL_PASS=pass
+      - PSQL_DBNAME=prueba
+      - PSQL_HOST=localhost
+      - PSQL_PORT=5432
+
 services:
     - postgresql
 install:
     - pip install django djangorestframework djangorestframework-simplejwt PyJWT django-cors-headers psycopg2-binary
+before_script:
+  - psql -c "CREATE DATABASE prueba;" -U postgres
+  - psql -c "CREATE USER samantha_guzman WITH PASSWORD 'pass';" -U postgres
 script:
+    - python manage.py makemigrations
+    - python manage.py migrate
     - python manage.py test
