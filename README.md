@@ -1,4 +1,4 @@
-# Django Authentication with JWT
+# Django Authentication with JWT [![Build Status](https://app.travis-ci.com/HazeMSR/Django-Auth-with-JWT.svg?branch=main)](https://app.travis-ci.com/HazeMSR/Django-Auth-with-JWT)
 
 ## First steps
 
