@@ -4,6 +4,7 @@ from rest_framework_simplejwt.tokens import AccessToken, RefreshToken, TokenErro
 
 from .models import User
 
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -17,6 +18,8 @@ class UserSerializer(serializers.ModelSerializer):
         instance = self.Meta.model(**validated_data)
         if password is not None:
             instance.set_password(password)
+        
+
         instance.save()
         return instance
 

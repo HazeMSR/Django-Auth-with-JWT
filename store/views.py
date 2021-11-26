@@ -8,15 +8,17 @@ from .serializers import *
 from .models import *
 from users.views import verify_token
 
+# from auth.permissions import *
+
 
 class JobViewSet(ModelViewSet):
     queryset = Job.objects.all()
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated,]
     serializer_class = JobSerializer
 
 class AddressViewSet(ModelViewSet):
     queryset = Address.objects.all()
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated,]
     serializer_class = AddressSerializer
 
 class EmployeeViewSet(ModelViewSet):
