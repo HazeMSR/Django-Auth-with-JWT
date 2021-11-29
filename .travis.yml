@@ -11,7 +11,7 @@ env:
 services:
     - postgresql
 install:
-    - pip install django djangorestframework djangorestframework-simplejwt PyJWT django-cors-headers psycopg2-binary rest_framework_swagger drf-yasg
+    - pip install django djangorestframework djangorestframework-simplejwt PyJWT django-cors-headers psycopg2-binary drf-yasg
 before_script:
   - psql -c "CREATE DATABASE prueba;" -U postgres
   - psql -c "CREATE USER samantha_guzman WITH PASSWORD 'pass';" -U postgres
