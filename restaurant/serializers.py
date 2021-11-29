@@ -10,10 +10,19 @@ class AddressSerializer(serializers.ModelSerializer):
 
 class RestaurantSerializer(serializers.ModelSerializer):
     #orders = serializers.StringRelatedField(many=True, read_only=True)
-    address = AddressSerializer(read_only=True)
+    address = AddressSerializer()
     class Meta:
         model = Restaurant
         fields = ['id','name','type', 'phone', 'schedule', 'address']
+
+    def create(self, validated_data):
+        address = validated_data.pop('address')
+        print('--------validadated_data-------',validated_data)
+        print('--------VALUES-------',address.items)
+
+        address_instance = Address.objects.create(**address)
+        instance = Restaurant.objects.create(address=address_instance, **validated_data)
+        return instance
 
 class ProductsSerializer(serializers.ModelSerializer):
     class Meta:
