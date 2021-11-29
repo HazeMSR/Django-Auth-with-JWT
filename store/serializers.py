@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import *
-from rest_framework import serializers
 
 class StoreSerializer(serializers.ModelSerializer):
     employees = serializers.StringRelatedField(many=True, read_only=True)
@@ -15,6 +14,7 @@ class JobSerializer(serializers.ModelSerializer):
 
 class AddressSerializer(serializers.ModelSerializer):
     class Meta:
+        ref_name = "store_address"
         model = Address
         fields = ['id','name','state','ext_number','int_number']
 

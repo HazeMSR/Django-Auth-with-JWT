@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'mailer',
     'users',
-    'store'
+    'store',
+    'restaurant',
 ]
 
 MIDDLEWARE = [
